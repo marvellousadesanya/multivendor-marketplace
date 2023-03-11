@@ -1,7 +1,18 @@
+import Footer from "../components/Footer";
+import Button from "../components/Button";
+import ButtonWhite from "../components/ButtonWhite";
+
 import HeaderImage from "../images/header-image.png";
 import listIcon from "../images/listBarIcon.png";
 import shoppingIcon from "../images/shoppingIcon.png";
 import secureIcon from "../images/secureIcon.png";
+import appleIcon from "../images/appleIcon.png";
+import dellIcon from "../images/dellIcon.png";
+import hpIcon from "../images/hpIcon.png";
+import technoIcon from "../images/technoIcon.png";
+import samsungIcon from "../images/samsungIcon.png";
+
+import laptopImage from "../images/laptop.png";
 
 const HomePage = () => {
   return (
@@ -12,9 +23,7 @@ const HomePage = () => {
           DESTINATION
         </h1>
         <img src={HeaderImage} alt="Header" className="m-[-13%] w-[400px]" />
-        <button className="bg-[#fff] font-innerbody text-mainColor px-12 py-2 rounded">
-          Shop Now
-        </button>
+        <ButtonWhite btnText="Shop Now" />
       </header>
 
       <section>
@@ -22,16 +31,30 @@ const HomePage = () => {
           <h2 className="font-heading text-mainColor text-[50px] text-center">
             Shop By Category
           </h2>
-          <div>
-            <p>Pic 1</p>
-            <p>Pic 2</p>
-            <p>Pic 3</p>
+
+          <div className="flex justify-around">
+            <div>
+              <img src={laptopImage} alt="laptop" />
+              <h3 className="font-innerbody font-semibold">Laptops</h3>
+            </div>
+
+            <div>
+              <img src={laptopImage} alt="laptop" />
+              <h3>Phones</h3>
+            </div>
+
+            <div>
+              <img src={laptopImage} alt="laptop" />
+              <h3>Tablets</h3>
+            </div>
           </div>
         </div>
       </section>
 
       <section className="bg-[#E5E5E5] px-[56px]">
-        <h2 className="text-[30px] font-innerbody">Why Choose ByteMarket?</h2>
+        <h2 className="text-[25px] font-bold font-innerbody">
+          Why ByteMarket?
+        </h2>
         <h3 className="font-bold font-innerbody">Various Categories</h3>
 
         <div className="flex items-center gap-x-20">
@@ -83,28 +106,28 @@ const HomePage = () => {
           </div>
 
           <div className="text-center">
-            <button className="px-[80px] py-[5px] font-semibold text-[#fff] bg-mainColor rounded">
-              Shop Now
-            </button>
+            <div className="flex justify-center items-center">
+              <Button btnText="Shop Now" />
+            </div>
           </div>
         </div>
       </section>
 
       <section>
         <h2 className="font-innerbody font-bold text-[30px]">Brands we sell</h2>
-        <div className="flex">
-          <li>Apple</li>
-          <li>Samsung</li>
-          <li>HP</li>
-          <li>Lenovo</li>
+        <div className="flex space-x-24 h-[50px] justify-center">
+          <img src={appleIcon} alt="apple" className="" />
+          <img src={dellIcon} alt="dell" />
+          <img src={hpIcon} alt="hp" />
+          <img src={technoIcon} alt="techno" />
+          <img src={samsungIcon} alt="samsung" />
         </div>
 
-        <div className="text-center">
-          <button className="px-[80px] py-[5px] font-semibold text-[#fff] bg-mainColor rounded">
-            Explore Brands
-          </button>
+        <div className="flex justify-center items-center my-7">
+          <Button btnText="Explore Brands" />
         </div>
       </section>
+      <Footer />
     </div>
   );
 };
