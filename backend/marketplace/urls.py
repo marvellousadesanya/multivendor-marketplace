@@ -22,7 +22,9 @@ urlpatterns = [
     #path('category', include('category.urls')),
     path('api-auth/', include('rest_framework.urls')),
     path('', views.home, name='home'),
+    path('cat-api/', include('category.api.urls')),
     path('store/', include('store.urls')),
-    path('api/', include('store.api.urls')),
+    path('store-api/', include('store.api.urls')),
     path('cart/', include('cart.urls')),
+    path('cart-api/', include('cart.api.urls')),
 ]
