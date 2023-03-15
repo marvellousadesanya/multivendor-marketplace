@@ -20,12 +20,13 @@ class ProductListView(ListCreateAPIView):
                 product = Product.objects.get(id=id)  
                 if product.stock != 0:
                     product.stock -= 1
-                    product.is_available -= 1
                     product.save()
                     serializer = ProductSerializer(product)
                     return Response(serializer.data)
-                if product.stock == 0 and product.is_available == 0:
-                    return Response(status.HTTP_101_SWITCHING_PROTOCOLS)
+                if product.stock == 0:
+                        product.is_available -= 1
+                        return Response(status.HTTP_101_SWITCHING_PROTOCOLS)
+                   
         except ObjectDoesNotExist:
             return Response(status=status.HTTP_404_NOT_FOUND)
 
