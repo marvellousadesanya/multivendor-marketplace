@@ -3,5 +3,5 @@ from django.http import HttpResponse
 
 
 # Create your views here.
-def store(request):
+def category(request):
     return HttpResponse('Welcome')
