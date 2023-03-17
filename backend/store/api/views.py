@@ -39,6 +39,7 @@ class ProductDetailView(viewsets.ModelViewSet):
     ordering_fields = {'price', 'stock'}
     filterset_fields = {'price', 'stock'}
     search_fields = ['product_name']
-    
+
+
 #class CustomTokenObtainPairView(TokenObtainPairView):
 #    serializer_class = CustomTokenObtainPairSerializer
