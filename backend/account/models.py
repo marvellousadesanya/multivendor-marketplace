@@ -9,7 +9,7 @@ class MyAccountManager(BaseUserManager):
         create_user: Create account page for web user (buyer, seller)
         create_superuser: Create upper level priviledges for the top user
     """
-    
+
     def create_user(self, first_name, last_name, username, email, password=None):
         """
         Check for valid input and raise error if not true \

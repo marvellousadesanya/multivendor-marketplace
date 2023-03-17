@@ -14,5 +14,5 @@ router.register(r'api/store/', ProductListView, 'store')
 
 urlpatterns = [
     path('', include(router.urls)),
-    path('product-item/<int:pk>', ProductListView.product_item)
+    path('product-item/<int:id>', ProductListView.product_item)
 ]

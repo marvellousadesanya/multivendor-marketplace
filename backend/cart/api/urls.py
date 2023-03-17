@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path, include
 from .views import CartView, CartItemView
 from rest_framework import routers
 
@@ -11,4 +11,7 @@ from rest_framework import routers
 router = routers.DefaultRouter()
 router.register(r'api/cart/', CartView, 'cart')
 
-urlpatterns = router.urls
+urlpatterns = [
+    path('', include(router.urls)),
+    path('cart-item/<int:id>', CartView.add_to_cart)
+]

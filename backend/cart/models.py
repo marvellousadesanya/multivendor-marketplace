@@ -1,5 +1,6 @@
 from django.db import models
 from store.models import Product
+import uuid
 #from cart.models import Cart
 
 
