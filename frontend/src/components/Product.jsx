@@ -1,8 +1,8 @@
 const Product = () => {
   return (
-    <div className="h-[308px] w-[187px] flex justify-center rounded-lg bg-[#fff]">
-      <div>
-        <div className="bg-product-bg mt-5 w-[152px] rounded-lg">
+    <div className="h-[308px] 2xl:w-[184px] w-[140px] flex justify-center rounded-lg bg-[#fff]">
+      <div className="">
+        <div className="bg-product-bg 2xl:mt-5 mt-2 2xl:w-[144px] w-[130px] rounded-lg">
           <img
             alt=""
             src={require("../images/laptop.png")}

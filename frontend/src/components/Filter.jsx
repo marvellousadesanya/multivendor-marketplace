@@ -1,12 +1,12 @@
 const Filter = () => {
   return (
-    <div className="font-innerbody text-bodyColor space-y-12">
+    <div className="2xl:w-[360px] font-innerbody text-bodyColor space-y-12 bg-[#fff] pl-8">
       <div className="flex justify-between">
         <h3 className="text-[32px] font-semibold">Filter</h3>
         <div className="text-mainColor">Clear all</div>
       </div>
 
-      <div className="flex flex-col">
+      <div className="flex flex-col ">
         <h4>Type</h4>
         <div>
           <input type="checkbox" />
