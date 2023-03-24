@@ -7,6 +7,7 @@ class CartSerializer(serializers.ModelSerializer):
         fields = ('cart_id', 'date_added')
         
 class CartItemSerializer(serializers.ModelSerializer):
+    """Display attribute only"""
     class Meta:
         model = CartItem
         fields = ('product', 'price', 'quantity')
