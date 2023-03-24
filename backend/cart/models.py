@@ -1,6 +1,5 @@
 from django.db import models
 from store.models import Product
-import uuid
 #from cart.models import Cart
 
 
@@ -14,7 +13,7 @@ class Cart(models.Model):
     
 class CartItem(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
-    cart = models.ForeignKey(Cart, on_delete=models.CASCADE)
+    price = models.DecimalField(max_digits=9, decimal_places=2)
     quantity = models.IntegerField()
     is_active = models.BooleanField(default=True)
     
