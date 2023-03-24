@@ -39,7 +39,7 @@ class CartView(viewsets.ModelViewSet):
         
     
 class CartItemView(viewsets.ModelViewSet):
-    """Pagination Ordering, Filtering, Searching"""
+    """ Pagination, Ordering, Filtering, Searching"""
     queryset = CartItem.objects.all()
     serializer_class = CartItemSerializer
     ordering_fields = {'product', 'cart', 'quantity'}
