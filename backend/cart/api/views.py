@@ -17,6 +17,14 @@ class CartView(viewsets.ModelViewSet):
     @permission_classes((permissions.AllowAny))
     @api_view(['POST', 'GET'])
     def add_to_cart(request, id):
+        """
+        This method allow user to cart item and save to database,\
+            pending the time of the product availability
+            returns carted items if it meet the code requirements
+        Args:
+            request: POST request method for now (updated later)
+            id: product id parameter to be input
+        """
         if request.method == 'POST':
             product = Product.objects.get(id=id)
             if product.stock > 0:
