@@ -8,7 +8,8 @@ class AccountAdmin(UserAdmin):
     """
     Administrator level registered on the administration panel
     Args:
-        list_display: 
+        list_display: Display details only
+        list_display_links: email, first_name, and last__name 
     """
     list_display = ('email', 'first_name', 'last_name', 'username', 'is_active', 'date_joined')
     list_display_links = ('email', 'first_name', 'last_name')
