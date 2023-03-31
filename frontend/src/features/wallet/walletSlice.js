@@ -1,9 +1,14 @@
 import { createSlice, nanoid } from "@reduxjs/toolkit";
 
 const initialState = {
-  amount: 300000,
-  transactionID: "1",
-  description: "initial deposit",
+  balance: 2000000,
+  transactions: [
+    {
+      amount: 200000,
+      transactionID: "1",
+      description: "initial deposit",
+    },
+  ],
 };
 
 export const walletSlice = createSlice({
@@ -12,8 +17,9 @@ export const walletSlice = createSlice({
   reducers: {
     fundWallet: {
       reducer(state, action) {
-        state.amount += action.payload.amount;
+        state.balance += action.payload.amount;
         console.log(action.payload);
+        state.transactions.push(action.payload);
       },
       prepare(amountToAdd, description) {
         return {
@@ -25,11 +31,27 @@ export const walletSlice = createSlice({
         };
       },
     },
+    buyItem: {
+      reducer(state, action) {
+        state.balance -= action.payload.amount;
+        console.log(action.payload);
+        state.transactions.push(action.payload);
+      },
+      prepare(amountToDeduct, purchaseDescription) {
+        return {
+          payload: {
+            amount: amountToDeduct,
+            transactionID: nanoid(),
+            description: `Ordered a product: ${purchaseDescription}`,
+          },
+        };
+      },
+    },
   },
 });
 
 export const walletBalance = (state) => state.wallet;
 
-export const { fundWallet } = walletSlice.actions;
+export const { fundWallet, buyItem } = walletSlice.actions;
 
 export default walletSlice.reducer;

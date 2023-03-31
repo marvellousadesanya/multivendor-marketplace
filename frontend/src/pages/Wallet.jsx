@@ -1,4 +1,3 @@
-
 import { useDispatch, useSelector } from "react-redux";
 import { walletBalance } from "../features/wallet/walletSlice";
 import { showModal, modalWindow } from "../features/wallet/modalSlice";
@@ -8,7 +7,22 @@ import Menu from "../components/Menu";
 const Wallet = () => {
   const dispatch = useDispatch();
   let window = useSelector(modalWindow);
+
   let currentWalletBalance = useSelector(walletBalance);
+  console.log(currentWalletBalance.transactions);
+
+  const transactions = currentWalletBalance.transactions.map((transaction) => (
+    <div>
+      <div className="flex justify-around font-innerbody font-semibold text-[#6C6C6C]">
+        <p>Funded/Deducted</p>
+        <p>{transaction.description}</p>
+        <p>Date</p>
+        <p>{transaction.amount}</p>
+        <button>Status</button>
+      </div>
+      <hr />
+    </div>
+  ));
 
   return (
     <div className="flex bg-backgroundColor">
@@ -24,7 +38,7 @@ const Wallet = () => {
                   Wallet Balance
                 </p>
                 <p className="text-[#27AE60] font-bold text-2xl font-innerbody">
-                  N{currentWalletBalance.amount}
+                  N{currentWalletBalance.balance}
                 </p>
               </div>
               <div>
@@ -72,15 +86,7 @@ const Wallet = () => {
               Transactions
             </h2>
 
-            <div className="flex justify-around font-innerbody font-semibold text-[#6C6C6C]">
-              <p>Icon</p>
-              <p>Funded</p>
-              <p>{currentWalletBalance.description}</p>
-              <p>Date</p>
-              <p>Amount</p>
-              <button>Status</button>
-            </div>
-            <hr></hr>
+            <div>{transactions}</div>
           </section>
         </div>
       </div>

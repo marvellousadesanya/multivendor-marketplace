@@ -19,6 +19,8 @@ const Inventory = () => {
   const status = useSelector(getProductsStatus);
   const error = useSelector(getProductsError);
 
+  console.log(products);
+
   useEffect(() => {
     if (status === "idle") {
       dispatch(fetchProducts());
@@ -47,13 +49,15 @@ const Inventory = () => {
           <div className="flex justify-center flex-1">
             <div className=" grid grid-cols-5 gap-x-7 gap-y-10 p-5">
               {products.map((product) => (
-                <Product
-                  key={product.id}
-                  productName={product["title"]}
-                  productImage={product.images[2]}
-                  productPrice={product.price}
-                  id={product.id}
-                />
+                <div key={product.id}>
+                  <Product
+                    key={product.id}
+                    productName={product["title"]}
+                    productImage={product.images[2]}
+                    productPrice={product.price}
+                    id={product.id}
+                  />
+                </div>
               ))}
             </div>
           </div>
