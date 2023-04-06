@@ -10,6 +10,7 @@ module.exports = {
     colors: {
       mainColor: "#F77F00",
       bodyColor: "#003049",
+      backgroundColor: "#ECF0FF",
     },
     fontFamily: {
       heading: ["Bebas Neue", "cursive"],

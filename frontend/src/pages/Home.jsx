@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 import Footer from "../components/Footer";
 import Button from "../components/Button";
@@ -41,9 +42,11 @@ const HomePage = () => {
         <h3 className="font-innerbody mb-[-5%] p-0 font-semibold">
           Your ultimate tech
         </h3>
-        <h1 className=" font-heading text-[220px] text-mainColor mt-0">
-          DESTINATION
-        </h1>
+        
+          <h1 className=" font-heading text-[220px] text-mainColor mt-0">
+            DESTINATION
+          </h1>
+        
 
         <motion.div
           initial={{ x: 1000 }}

@@ -1,4 +1,5 @@
 // import { useState } from "react";
+import { Link } from "react-router-dom";
 import logo from "../images/byteMarketLogo.png";
 import { ReactComponent as Icon } from "../images/marketplaceIcon.svg";
 
@@ -17,11 +18,15 @@ const Menu = () => {
       <nav className="relative h-[70vh] mt-24">
         <p className="ml-8">MENU</p>
         <ul className="list-none font-semibold space-y-8 pt-5 ml-8">
-          <li>Marketplace</li>
+          <Link to="/inventory">
+            <li>Marketplace</li>
+          </Link>
           <li>Cart</li>
           <li>Orders</li>
           <li>Saved</li>
-          <li>Wallet</li>
+          <Link to="/buyer-wallet">
+            <li>Wallet</li>
+          </Link>
           <li>Account</li>
         </ul>
         <p className="absolute bottom-0 ml-8">Log out</p>

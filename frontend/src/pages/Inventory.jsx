@@ -16,20 +16,26 @@ const Inventory = () => {
   const dispatch = useDispatch();
 
   const products = useSelector(selectAllProducts);
-
   const status = useSelector(getProductsStatus);
   const error = useSelector(getProductsError);
 
-  useEffect(() => {
-    dispatch(fetchProducts());
-  }, [dispatch]);
+  console.log(products);
 
+  useEffect(() => {
+    if (status === "idle") {
+      dispatch(fetchProducts());
+    }
+  }, [status, dispatch]);
+
+  let content;
   if (status === "loading") {
+    content = "Loading...";
     console.log("loading");
   } else if (status === "failed") {
+    content = <p>Error</p>;
     console.log(error);
-  } else {
-    console.log(products.products[1]);
+  } else if (status === "succeeded") {
+    console.log(products);
   }
 
   return (
@@ -42,19 +48,17 @@ const Inventory = () => {
         <div className="flex  justify-between">
           <div className="flex justify-center flex-1">
             <div className=" grid grid-cols-5 gap-x-7 gap-y-10 p-5">
-              {/* <p>{products[0]["title"]}</p> */}
-              <Product />
-              <Product />
-              <Product />
-              <Product />
-              <Product />
-              <Product />
-              <Product />
-              <Product />
-              <Product />
-              <Product />
-              <Product />
-              <Product />
+              {products.map((product) => (
+                <div key={product.id}>
+                  <Product
+                    key={product.id}
+                    productName={product["title"]}
+                    productImage={product.images[2]}
+                    productPrice={product.price}
+                    id={product.id}
+                  />
+                </div>
+              ))}
             </div>
           </div>
 
