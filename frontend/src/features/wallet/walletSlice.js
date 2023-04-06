@@ -1,12 +1,13 @@
 import { createSlice, nanoid } from "@reduxjs/toolkit";
 
 const initialState = {
-  balance: 2000000,
+  balance: 200000,
   transactions: [
     {
       amount: 200000,
       transactionID: "1",
       description: "initial deposit",
+      funded: true,
     },
   ],
 };
@@ -27,6 +28,7 @@ export const walletSlice = createSlice({
             amount: amountToAdd,
             transactionID: nanoid(),
             description,
+            funded: true,
           },
         };
       },
@@ -43,6 +45,7 @@ export const walletSlice = createSlice({
             amount: amountToDeduct,
             transactionID: nanoid(),
             description: `Ordered a product: ${purchaseDescription}`,
+            funded: false,
           },
         };
       },

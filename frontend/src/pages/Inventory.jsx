@@ -39,33 +39,26 @@ const Inventory = () => {
   }
 
   return (
-    <div className="bg-[#ECF0FF] h-[100vh] flex flex-auto overflow-x-hidden">
-      <div className="">
+    <div className="bg-[#ECF0FF] ">
+      <NavBar />
+      <div className="flex">
         <Menu />
-      </div>
-      <div className="w-full">
-        <NavBar />
-        <div className="flex  justify-between">
-          <div className="flex justify-center flex-1">
-            <div className=" grid grid-cols-5 gap-x-7 gap-y-10 p-5">
-              {products.map((product) => (
-                <div key={product.id}>
-                  <Product
-                    key={product.id}
-                    productName={product["title"]}
-                    productImage={product.images[2]}
-                    productPrice={product.price}
-                    id={product.id}
-                  />
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="w-[250px] flex-initial">
-            <Filter />
+        <div>
+          <div className="grid grid-cols-5 gap-x-5 gap-y-10 m-5">
+            {products.map((product) => (
+              <div key={product.id}>
+                <Product
+                  key={product.id}
+                  productName={product["title"]}
+                  productImage={product.images[2]}
+                  productPrice={product.price}
+                  id={product.id}
+                />
+              </div>
+            ))}
           </div>
         </div>
+        <Filter />
       </div>
     </div>
   );

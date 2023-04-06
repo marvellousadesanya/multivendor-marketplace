@@ -14,7 +14,7 @@ const FundModal = () => {
   return (
     <div>
       {fundModal.window ? (
-        <div className=" rounded-2xl w-72 text-bodyColor font-innerbody bg-[#fff] p-5">
+        <div className="absolute rounded-2xl w-72 text-bodyColor font-innerbody bg-[#fff] p-5">
           <form className="flex flex-col space-y-2 justify-center">
             <h3 className="font-bold text-4xl">Fund Wallet</h3>
             <p>You can ignore the card details for now...</p>
