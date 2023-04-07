@@ -1,13 +1,18 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-import { ReactComponent as Icon } from "../images/marketplaceIcon.svg";
+import CartIcon from "../images/svg-icons/newCartIcon.jsx";
+import MarketplaceI from "../images/svg-icons/marketplaceIcon.jsx";
+import WalletIcon from "../images/svg-icons/WalletIcon.jsx";
+import AccountIcon from "../images/svg-icons/AccountIcon.jsx";
+
+// import { ReactComponent as Icon } from "../images/marketplaceIcon.svg";
 
 const Menu = () => {
-  const [fillColor, setFillColor] = useState("#000");
+  const [fillColor, setFillColor] = useState("#003049");
 
-  const handleClick = () => {
-    setFillColor("#fff");
+  const changeColor = () => {
+    setFillColor("#F77F00");
   };
 
   return (
@@ -16,32 +21,34 @@ const Menu = () => {
         <p className="ml-8">MENU</p>
 
         <ul className="list-none font-semibold pt-5 ml-8 space-y-7">
-          <div className="space-y-7">
-            <div>
-              <Link to="/inventory">
-                <Icon
-                  onClick={handleClick}
-                  fill={fillColor}
-                  style={{ cursor: "pointer" }}
-                />
+          <div className="space-y-12">
+            <div
+              className="hover:pl-2 transition-all ease-in"
+              onClick={changeColor}
+            >
+              <Link className="flex space-x-3" to="/inventory">
+                <MarketplaceI fill={fillColor} />
                 <li>Marketplace</li>
               </Link>
             </div>
 
-            <div>
-              <Link to="/cart">
+            <div className="hover:pl-2 transition-all ease-in">
+              <Link className="flex space-x-3" to="/cart">
+                <CartIcon />
                 <li>Cart</li>
               </Link>
             </div>
 
-            <div>
-              <Link to="/buyer-wallet">
+            <div className="hover:pl-2 transition-all ease-in">
+              <Link className="flex space-x-3" to="/buyer-wallet">
+                <WalletIcon />
                 <li>Wallet</li>
               </Link>
             </div>
 
-            <div>
-              <Link>
+            <div className="hover:pl-2 transition-all ease-in">
+              <Link className="flex space-x-3">
+                <AccountIcon />
                 <li>Account</li>
               </Link>
             </div>
