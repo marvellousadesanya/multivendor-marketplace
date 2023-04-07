@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import NavBar from "./NavBar";
 import { selectAllProducts } from "../features/products/productsSlice";
 import Menu from "./Menu";
+import { moveToCart } from "../features/cart/cartSlice";
 
 const ProductDetail = () => {
   // const { slug } = useParams();
@@ -13,11 +14,16 @@ const ProductDetail = () => {
   const { id } = useParams();
 
   const products = useSelector(selectAllProducts);
-  const [buyBtnClicked, setBuyBtnClicked] = useState(false);
+  const [moveBtnClicked, setMoveBtnClicked] = useState(false);
 
   const product = products.find((p) => p.id === +id);
 
   const purchaseDescription = product.title;
+
+  const handleMoveToCart = () => {
+    dispatch(moveToCart(product));
+    setMoveBtnClicked(true);
+  };
 
   return (
     <div className="bg-[#E5E5E5] h-screen">
@@ -41,15 +47,10 @@ const ProductDetail = () => {
 
                 <div className="flex space-x-5">
                   <button
+                    onClick={handleMoveToCart}
                     className="bg-mainColor text-[#fff] px-12 py-3 rounded-xl"
-                    onClick={() => {
-                      dispatch(
-                        buyItem(parseInt(product.price), purchaseDescription)
-                      );
-                      setBuyBtnClicked(true);
-                    }}
                   >
-                    Buy
+                    Move to Cart
                   </button>
 
                   <Link to="/buyer-wallet">
@@ -66,21 +67,24 @@ const ProductDetail = () => {
             </h3>
             <p>Lorem Ipsum</p>
 
-            {buyBtnClicked ? (
+            {moveBtnClicked ? (
               <div className="flex justify-center items-center shadow bg-[#fff] w-[500px] h-[200px] rounded top-0 bottom-0 left-0 right-0 m-auto absolute">
                 <div className="w-[400px]">
                   <p className="font-innerbody text-bodyColor">
-                    Thank you for ordering this product. ${product.price} has
-                    been deducted from your wallet! Please check your wallet
-                    balance.
+                    Product moved to Cart Page.
                   </p>
                   <div className="flex justify-center">
                     <button
                       className="bg-mainColor px-4 py-3 text-center text-[#fff] rounded-2xl"
-                      onClick={() => setBuyBtnClicked(false)}
+                      onClick={() => setMoveBtnClicked(false)}
                     >
                       Close
                     </button>
+                    <Link to="/cart">
+                      <button className="bg-mainColor px-4 py-3 text-center text-[#fff] rounded-2xl">
+                        Visit Cart
+                      </button>
+                    </Link>
                   </div>
                 </div>
               </div>

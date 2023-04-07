@@ -7,62 +7,71 @@ const Filter = () => {
       </div>
 
       <div className="flex flex-col ">
-        <h4>Type</h4>
-        <div>
-          <input type="checkbox" />
-          Desktop
+        <h4 className="text-2xl font-semibold">Type</h4>
+        <div className="flex space-x-3">
+          <input type="checkbox" className="" />
+          <span>Desktop</span>
         </div>
-        <div>
+
+        <div className="flex space-x-3">
           <input type="checkbox" />
-          Laptop
+          <span>Laptop</span>
         </div>
-        <div>
+
+        <div className="flex space-x-3">
           <input type="checkbox" />
-          Mobile
+          <span>Mobile</span>
         </div>
-        <div>
+
+        <div className="flex space-x-3">
           <input type="checkbox" />
-          Tablet
+          <span>Tablet</span>
         </div>
       </div>
 
       <div>
-        <h4>Manufacturer</h4>
-        <div>
+        <h4 className="text-2xl font-semibold">Manufacturer</h4>
+        <div className="flex space-x-3">
           <input type="checkbox" />
-          Apple
+          <span>Apple</span>
         </div>
-        <div>
+
+        <div className="flex space-x-3">
           <input type="checkbox" />
-          Samsung
+          <span>Samsung</span>
         </div>
-        <div>
+
+        <div className="flex space-x-3">
           <input type="checkbox" />
-          HP
+          <span>HP</span>
         </div>
-        <div>
+
+        <div className="flex space-x-3">
           <input type="checkbox" />
-          Lenovo
+          <span>Lenovo</span>
         </div>
       </div>
 
       <div>
-        <h4>Colour</h4>
-        <div>
+        <h4 className="text-2xl font-semibold">Colour</h4>
+        <div className="flex space-x-3">
           <input type="checkbox" />
-          Blue
+          <span>Blue</span>
         </div>
-        <div>
+
+        <div className="flex space-x-3">
           <input type="checkbox" />
           Black
         </div>
-        <div>
+
+        <div className="flex space-x-3">
           <input type="checkbox" />
-          Red
+          <span>Red</span>
         </div>
-        <div>
+
+        <div className="flex space-x-3">
           <input type="checkbox" />
-          Orange
+          <span>Orange</span>
         </div>
       </div>
     </div>
