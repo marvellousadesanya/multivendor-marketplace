@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import NavBar from "./NavBar";
 import { selectAllProducts } from "../features/products/productsSlice";
 import Menu from "./Menu";
+import { moveToCart } from "../features/cart/cartSlice";
 
 const ProductDetail = () => {
   // const { slug } = useParams();
@@ -18,6 +19,10 @@ const ProductDetail = () => {
   const product = products.find((p) => p.id === +id);
 
   const purchaseDescription = product.title;
+
+  const handleMoveToCart = () => {
+    dispatch(moveToCart(product));
+  };
 
   return (
     <div className="bg-[#E5E5E5] h-screen">
@@ -40,6 +45,12 @@ const ProductDetail = () => {
                 </p>
 
                 <div className="flex space-x-5">
+                  <button
+                    onClick={handleMoveToCart}
+                    className="bg-mainColor text-[#fff] px-12 py-3 rounded-xl"
+                  >
+                    Move to Cart
+                  </button>
                   <button
                     className="bg-mainColor text-[#fff] px-12 py-3 rounded-xl"
                     onClick={() => {

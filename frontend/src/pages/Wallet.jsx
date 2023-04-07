@@ -92,7 +92,7 @@ const Wallet = () => {
             </div>
             {window.window ? <FundModal /> : null}
 
-            <section className="w-full mt-4 rounded-2xl bg-[#fff] h-[230px]">
+            <section className="w-full mt-4 rounded-2xl bg-[#fff] ">
               <h2 className="font-innerbody pt-8 font-semibold text-2xl text-bodyColor ml-10">
                 Transactions
               </h2>
