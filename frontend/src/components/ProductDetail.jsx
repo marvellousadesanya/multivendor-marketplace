@@ -14,7 +14,7 @@ const ProductDetail = () => {
   const { id } = useParams();
 
   const products = useSelector(selectAllProducts);
-  const [buyBtnClicked, setBuyBtnClicked] = useState(false);
+  const [moveBtnClicked, setMoveBtnClicked] = useState(false);
 
   const product = products.find((p) => p.id === +id);
 
@@ -22,6 +22,7 @@ const ProductDetail = () => {
 
   const handleMoveToCart = () => {
     dispatch(moveToCart(product));
+    setMoveBtnClicked(true);
   };
 
   return (
@@ -51,17 +52,6 @@ const ProductDetail = () => {
                   >
                     Move to Cart
                   </button>
-                  <button
-                    className="bg-mainColor text-[#fff] px-12 py-3 rounded-xl"
-                    onClick={() => {
-                      dispatch(
-                        buyItem(parseInt(product.price), purchaseDescription)
-                      );
-                      setBuyBtnClicked(true);
-                    }}
-                  >
-                    Buy
-                  </button>
 
                   <Link to="/buyer-wallet">
                     <button className="bg-[#fff] text-[#000] px-12 py-3 rounded-xl">
@@ -77,21 +67,24 @@ const ProductDetail = () => {
             </h3>
             <p>Lorem Ipsum</p>
 
-            {buyBtnClicked ? (
+            {moveBtnClicked ? (
               <div className="flex justify-center items-center shadow bg-[#fff] w-[500px] h-[200px] rounded top-0 bottom-0 left-0 right-0 m-auto absolute">
                 <div className="w-[400px]">
                   <p className="font-innerbody text-bodyColor">
-                    Thank you for ordering this product. ${product.price} has
-                    been deducted from your wallet! Please check your wallet
-                    balance.
+                    Product moved to Cart Page.
                   </p>
                   <div className="flex justify-center">
                     <button
                       className="bg-mainColor px-4 py-3 text-center text-[#fff] rounded-2xl"
-                      onClick={() => setBuyBtnClicked(false)}
+                      onClick={() => setMoveBtnClicked(false)}
                     >
                       Close
                     </button>
+                    <Link to="/cart">
+                      <button className="bg-mainColor px-4 py-3 text-center text-[#fff] rounded-2xl">
+                        Visit Cart
+                      </button>
+                    </Link>
                   </div>
                 </div>
               </div>

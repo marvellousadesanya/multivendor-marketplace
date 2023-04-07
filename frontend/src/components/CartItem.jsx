@@ -67,6 +67,25 @@ const CartItem = ({ title, price, productImg, id }) => {
             </div>
           </div>
         </div>
+
+        {buyBtnClicked ? (
+          <div className="flex justify-center items-center shadow bg-[#fff] w-[500px] h-[200px] rounded top-0 bottom-0 left-0 right-0 m-auto absolute">
+            <div className="w-[400px]">
+              <p className="font-innerbody text-bodyColor">
+                Thank you for ordering this product. ${product.price} has been
+                deducted from your wallet! Please check your wallet balance.
+              </p>
+              <div className="flex justify-center">
+                <button
+                  className="bg-mainColor px-4 py-3 text-center text-[#fff] rounded-2xl"
+                  onClick={() => setBuyBtnClicked(false)}
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        ) : null}
       </div>
     </div>
   );

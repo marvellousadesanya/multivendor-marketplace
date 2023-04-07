@@ -19,15 +19,18 @@ const Cart = () => {
             </div>
           ) : null}
 
-          {cart.map((item, index) => (
-            <CartItem
-              key={index}
-              title={item.title}
-              price={item.price}
-              productImg={item.images[0]}
-              id={item.id}
-            />
-          ))}
+          {cart
+            .slice(0)
+            .reverse()
+            .map((item, index) => (
+              <CartItem
+                key={index}
+                title={item.title}
+                price={item.price}
+                productImg={item.images[0]}
+                id={item.id}
+              />
+            ))}
         </div>
       </div>
     </div>
