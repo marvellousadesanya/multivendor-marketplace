@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { buyItem } from "../features/wallet/walletSlice";
 import { Link } from "react-router-dom";
 import NavBar from "./NavBar";
 import { selectAllProducts } from "../features/products/productsSlice";
 import Menu from "./Menu";
 import { moveToCart } from "../features/cart/cartSlice";
+
+import marvSeller from "../images/marv-seller.jpg";
 
 const ProductDetail = () => {
   // const { slug } = useParams();
@@ -17,8 +18,6 @@ const ProductDetail = () => {
   const [moveBtnClicked, setMoveBtnClicked] = useState(false);
 
   const product = products.find((p) => p.id === +id);
-
-  const purchaseDescription = product.title;
 
   const handleMoveToCart = () => {
     dispatch(moveToCart(product));
@@ -66,6 +65,23 @@ const ProductDetail = () => {
               Product details
             </h3>
             <p>Lorem Ipsum</p>
+            <hr className="mt-5" />
+            <section className=" rounded shadow-md p-5 w-96 cursor-pointer transition-all ease-in hover:scale-110">
+              <div>
+                <h2>Seller Details</h2>
+                <div className="flex space-x-7 items-center">
+                  <div className="rounded-full w-12 h-12 overflow-hidden">
+                    <img src={marvSeller} alt="" />
+                  </div>
+
+                  <div>
+                    <p>Name: Marv Adesanya</p>
+                    <p>Sold 32 products so far</p>
+                    <p>Click to find more details</p>
+                  </div>
+                </div>
+              </div>
+            </section>
 
             {moveBtnClicked ? (
               <div className="flex justify-center items-center shadow bg-[#fff] w-[500px] h-[200px] rounded top-0 bottom-0 left-0 right-0 m-auto absolute">

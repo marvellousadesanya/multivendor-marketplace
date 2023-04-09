@@ -1,6 +1,6 @@
 import { useState } from "react";
-import Laptop from "../images/laptop.png";
 import { useDispatch, useSelector } from "react-redux";
+import { removeFromCart } from "../features/cart/cartSlice";
 import { selectAllProducts } from "../features/products/productsSlice";
 import { buyItem } from "../features/wallet/walletSlice";
 
@@ -17,6 +17,10 @@ const CartItem = ({ title, price, productImg, id }) => {
   const handleBuyItem = () => {
     dispatch(buyItem(parseInt(product.price), purchaseDescription));
     setBuyBtnClicked(true);
+  };
+
+  const handleRemoveFromCart = (productId) => {
+    dispatch(removeFromCart(productId));
   };
 
   return (
@@ -36,7 +40,10 @@ const CartItem = ({ title, price, productImg, id }) => {
             </div>
 
             <div className="flex space-x-3">
-              <button className="bg-mainColor text-[#fff] rounded-xl px-4 py-2">
+              <button
+                className="bg-mainColor text-[#fff] rounded-xl px-4 py-2"
+                onClick={() => handleRemoveFromCart(product.id)}
+              >
                 Remove
               </button>
               <button

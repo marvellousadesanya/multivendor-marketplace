@@ -16,8 +16,12 @@ code {
 @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
 
 /* Body font */
-@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+h2 {
+  @apply text-bodyColor text-3xl;
+}

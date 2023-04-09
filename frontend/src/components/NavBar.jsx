@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import userPic from "../images/userpic.png";
 import logo from "../images/byteMarketLogo.png";
 
@@ -5,7 +6,9 @@ const NavBar = () => {
   return (
     <div className="flex h-20 px-7 justify-between items-center bg-[#fff] w-full">
       <div>
-        <img alt="" src={logo} />
+        <Link to="/">
+          <img alt="" src={logo} />
+        </Link>
       </div>
       <input
         type="text"

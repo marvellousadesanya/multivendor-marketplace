@@ -2,6 +2,8 @@ import Menu from "../components/Menu";
 import CartItem from "../components/CartItem";
 import NavBar from "../components/NavBar";
 import { useSelector } from "react-redux";
+import cartIcon from "../images/cart-png.png";
+import Button from "../components/Button";
 
 const Cart = () => {
   const cart = useSelector((state) => state.cart);
@@ -14,8 +16,18 @@ const Cart = () => {
         <Menu />
         <div>
           {cart.length === 0 ? (
-            <div>
-              <span>Your Cart is empty</span>
+            <div className="rounded shadow-md h-48 bg-[#fff] m-5 flex justify-center items-center w-[1000px]">
+              <span className="font-innerbody space-y-3 text-bodyColor text-base font-semibold">
+                <div className="flex justify-center">
+                  <img src={cartIcon} alt="" />
+                </div>
+                <p className="text-center text-xl">Your Cart is empty</p>
+                <div className="flex justify-center">
+                  <button className="text-[#fff] font-innerbody bg-mainColor rounded-xl py-2 px-4">
+                    Start Shopping
+                  </button>
+                </div>
+              </span>
             </div>
           ) : null}
 
