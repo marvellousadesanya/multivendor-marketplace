@@ -4,6 +4,7 @@ import Inventory from "./pages/Inventory";
 import ProductDetail from "./components/ProductDetail";
 import Wallet from "./pages/Wallet";
 import Cart from "./pages/Cart";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/buyer-wallet" element={<Wallet />} />
         <Route path="/cart" element={<Cart />} />
       </Routes>
+      <Footer />
     </div>
   );
 }

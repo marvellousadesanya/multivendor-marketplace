@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { removeFromCart } from "../features/cart/cartSlice";
 import { selectAllProducts } from "../features/products/productsSlice";
-import { buyItem } from "../features/wallet/walletSlice";
+import { buyItem, walletBalance } from "../features/wallet/walletSlice";
 
 const CartItem = ({ title, price, productImg, id }) => {
   const dispatch = useDispatch();
@@ -22,6 +22,9 @@ const CartItem = ({ title, price, productImg, id }) => {
   const handleRemoveFromCart = (productId) => {
     dispatch(removeFromCart(productId));
   };
+
+  const walletBalanceTest = useSelector(walletBalance);
+  console.log(walletBalanceTest);
 
   return (
     <div className="flex  items-center w-[700px] h-[250px] rounded-2xl bg-[#fff] px-5 m-5">
@@ -75,7 +78,7 @@ const CartItem = ({ title, price, productImg, id }) => {
           </div>
         </div>
 
-        {buyBtnClicked ? (
+        {buyBtnClicked && walletBalanceTest.error === false ? (
           <div className="flex justify-center items-center shadow bg-[#fff] w-[500px] h-[200px] rounded top-0 bottom-0 left-0 right-0 m-auto absolute">
             <div className="w-[400px]">
               <p className="font-innerbody text-bodyColor">
@@ -93,6 +96,24 @@ const CartItem = ({ title, price, productImg, id }) => {
             </div>
           </div>
         ) : null}
+
+        {buyBtnClicked && walletBalanceTest.error === true ? (
+          <span className="text-center bg-[#fff] w-[500px] h-[200px] rounded top-0 bottom-0 left-0 right-0 m-auto absolute">
+            Insufficient funds! Kindly add more funds to your wallet.
+            <div className="flex justify-center text-[#fff] font-innerbody space-x-3">
+              <button className="py-2 px-4 bg-mainColor rounded-xl">
+                Fund Wallet
+              </button>
+              <button
+                className="py-2 px-4 bg-mainColor rounded-xl"
+                onClick={() => setBuyBtnClicked(false)}
+              >
+                Close
+              </button>
+            </div>
+          </span>
+        ) : // console.log(walletBalance.error)
+        null}
       </div>
     </div>
   );
