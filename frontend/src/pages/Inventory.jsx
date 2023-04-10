@@ -7,6 +7,8 @@ import {
   fetchProducts,
 } from "../features/products/productsSlice";
 
+import Loader from "react-spinners/DotLoader";
+
 import Product from "../components/Product";
 import Menu from "../components/Menu";
 import Filter from "../components/Filter";
@@ -27,15 +29,33 @@ const Inventory = () => {
     }
   }, [status, dispatch]);
 
+  const override = {
+    display: "block",
+    margin: "0 auto",
+    borderColor: "red",
+  };
+
   let content;
   if (status === "loading") {
-    content = "Loading...";
-    console.log("loading");
+    content = (
+      <div className="h-[90vh] w-[80vw] flex justify-center items-center">
+        <Loader color={"#F77F00"} cssOverride={override} size={100} />
+      </div>
+    );
   } else if (status === "failed") {
     content = <p>Error</p>;
-    console.log(error);
   } else if (status === "succeeded") {
-    console.log(products);
+    content = products.map((product) => (
+      <div key={product.id}>
+        <Product
+          key={product.id}
+          productName={product["title"]}
+          productImage={product.images[2]}
+          productPrice={product.price}
+          id={product.id}
+        />
+      </div>
+    ));
   }
 
   return (
@@ -44,19 +64,7 @@ const Inventory = () => {
       <div className="flex">
         <Menu />
         <div>
-          <div className="grid grid-cols-5 gap-x-5 gap-y-10 m-5">
-            {products.map((product) => (
-              <div key={product.id}>
-                <Product
-                  key={product.id}
-                  productName={product["title"]}
-                  productImage={product.images[2]}
-                  productPrice={product.price}
-                  id={product.id}
-                />
-              </div>
-            ))}
-          </div>
+          <div className="grid grid-cols-5 gap-x-5 gap-y-10 m-5">{content}</div>
         </div>
         <Filter />
       </div>

@@ -10,7 +10,6 @@ const Wallet = () => {
   let window = useSelector(modalWindow);
 
   let currentWalletBalance = useSelector(walletBalance);
-  console.log(currentWalletBalance.transactions);
 
   const transactions = currentWalletBalance.transactions.map(
     (transaction, index) => (
@@ -48,7 +47,7 @@ const Wallet = () => {
                     Wallet Balance
                   </p>
                   <p className="text-[#27AE60] font-bold text-2xl font-innerbody">
-                    N{currentWalletBalance.balance}
+                    ${currentWalletBalance.balance}
                   </p>
                 </div>
                 <div>
@@ -56,7 +55,7 @@ const Wallet = () => {
                     Pending Orders
                   </p>
                   <p className="text-[#F77F00] font-bold text-2xl font-innerbody">
-                    N150,000
+                    $0
                   </p>
                 </div>
                 <div>
@@ -64,7 +63,7 @@ const Wallet = () => {
                     Main Balance
                   </p>
                   <p className="text-[#D62828] font-bold text-2xl font-innerbody">
-                    N450,000
+                    $0
                   </p>
                 </div>
               </div>

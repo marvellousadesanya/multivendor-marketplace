@@ -16,7 +16,7 @@ const Menu = () => {
   };
 
   return (
-    <div className="sticky h-full w-[200px] font-innerbody bg-[#fff]  z-10 2xl:w-[360px]">
+    <div className="sticky h-[1000px] w-[200px] font-innerbody bg-[#fff]  z-10 2xl:w-[360px]">
       <nav className="relative h-[70vh] mt-24">
         <p className="ml-8">MENU</p>
 

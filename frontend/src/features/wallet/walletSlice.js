@@ -1,11 +1,10 @@
 import { createSlice, nanoid } from "@reduxjs/toolkit";
-import { act } from "react-dom/test-utils";
 
 const initialState = {
   balance: 50,
   transactions: [
     {
-      amount: 20,
+      amount: 50,
       transactionID: "1",
       description: "initial deposit",
       funded: true,
@@ -38,14 +37,16 @@ export const walletSlice = createSlice({
     },
     buyItem: {
       reducer(state, action) {
-        if (state.balance >= action.payload.amount) {
+        if (state.balance < action.payload.amount) {
+          state.error = true;
+        } else if (state.balance > action.payload.amount) {
           state.balance -= action.payload.amount;
           console.log(action.payload);
           state.transactions.push(action.payload);
+          state.error = false;
         }
-        state.error = true;
       },
-      prepare(amountToDeduct, purchaseDescription) {
+      prepare(amountToDeduct, purchaseDescription = "Bought some items") {
         return {
           payload: {
             amount: amountToDeduct,

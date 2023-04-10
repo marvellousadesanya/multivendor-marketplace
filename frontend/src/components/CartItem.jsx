@@ -23,8 +23,7 @@ const CartItem = ({ title, price, productImg, id }) => {
     dispatch(removeFromCart(productId));
   };
 
-  const walletBalanceTest = useSelector(walletBalance);
-  console.log(walletBalanceTest);
+  const currentWalletBalance = useSelector(walletBalance);
 
   return (
     <div className="flex  items-center w-[700px] h-[250px] rounded-2xl bg-[#fff] px-5 m-5">
@@ -61,7 +60,7 @@ const CartItem = ({ title, price, productImg, id }) => {
 
         <div className="space-y-12">
           <h3 className="text-2xl text-bodyColor font-innerbody font-semibold">
-            {price}
+            ${price}
           </h3>
           <div className="flex justify-center">
             <div className="flex space-x-3">
@@ -78,7 +77,7 @@ const CartItem = ({ title, price, productImg, id }) => {
           </div>
         </div>
 
-        {buyBtnClicked && walletBalanceTest.error === false ? (
+        {buyBtnClicked && currentWalletBalance.error === false ? (
           <div className="flex justify-center items-center shadow bg-[#fff] w-[500px] h-[200px] rounded top-0 bottom-0 left-0 right-0 m-auto absolute">
             <div className="w-[400px]">
               <p className="font-innerbody text-bodyColor">
@@ -97,7 +96,7 @@ const CartItem = ({ title, price, productImg, id }) => {
           </div>
         ) : null}
 
-        {buyBtnClicked && walletBalanceTest.error === true ? (
+        {buyBtnClicked && currentWalletBalance.error === true ? (
           <span className="text-center bg-[#fff] w-[500px] h-[200px] rounded top-0 bottom-0 left-0 right-0 m-auto absolute">
             Insufficient funds! Kindly add more funds to your wallet.
             <div className="flex justify-center text-[#fff] font-innerbody space-x-3">

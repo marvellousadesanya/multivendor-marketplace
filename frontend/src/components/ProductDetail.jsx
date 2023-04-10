@@ -25,7 +25,7 @@ const ProductDetail = () => {
   };
 
   return (
-    <div className="bg-[#E5E5E5] h-screen">
+    <div className="bg-[#E5E5E5] h-full overflow-hidden">
       <NavBar />
       <div className="flex">
         <Menu />
