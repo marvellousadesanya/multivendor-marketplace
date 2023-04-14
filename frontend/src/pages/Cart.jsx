@@ -69,20 +69,22 @@ const Cart = () => {
                   />
                 ))}
             </section>
-            <section className="rounded-2xl bg-[#fff] h-32 mt-5 w-64 p-3">
-              <h3 className="font-innerbody font-semibold text-bodyColor">
-                Summary
-              </h3>
-              <p className="font-innerbody text-[#6c6c6c] text-3xl">
-                ${cartTotal}
-              </p>
-              <button
-                className="bg-mainColor py-2 w-full font-innerbody font-semibold text-[#fff] rounded-xl"
-                onClick={handleBuyAllItems}
-              >
-                Proceed to Checkout
-              </button>
-            </section>
+            {cart.length ? (
+              <section className="rounded-2xl bg-[#fff] h-32 mt-5 w-64 p-3">
+                <h3 className="font-innerbody font-semibold text-bodyColor">
+                  Summary
+                </h3>
+                <p className="font-innerbody text-[#6c6c6c] text-3xl">
+                  ${cartTotal}
+                </p>
+                <button
+                  className="bg-mainColor py-2 w-full font-innerbody font-semibold text-[#fff] rounded-xl"
+                  onClick={handleBuyAllItems}
+                >
+                  Proceed to Checkout
+                </button>
+              </section>
+            ) : null}
 
             {buyBtnClicked && currentWalletBalance.error === false ? (
               <div className="flex justify-center items-center shadow bg-[#fff] w-[500px] h-[200px] rounded top-0 bottom-0 left-0 right-0 m-auto absolute">

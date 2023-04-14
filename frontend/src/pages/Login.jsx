@@ -33,10 +33,10 @@ const Login = () => {
                 <h3 className="font-bold text-4xl">Login</h3>
                 <div className="flex flex-col ">
                   <label>Name</label>
-                  <input type="text" />
+                  <input className="form-input" type="text" />
 
                   <label>Email</label>
-                  <input type="email" />
+                  <input className="form-input" type="email" />
 
                   <label>Password</label>
                   <input type="password" />

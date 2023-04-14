@@ -30,6 +30,6 @@ label {
   @apply font-bold font-innerbody text-bodyColor;
 }
 
-input {
+.form-input {
   @apply rounded-xl p-5 w-[600px] h-10 border border-[#8A8A8A];
 }

@@ -46,13 +46,13 @@ const Register = () => {
               <h3 className="font-bold text-4xl mb-5">Register</h3>
               <div className="flex flex-col ">
                 <label>Name</label>
-                <input type="text" />
+                <input className="form-input" type="text" />
                 <label>Email</label>
-                <input type="email" />
+                <input className="form-input" type="email" />
                 <label>Password</label>
-                <input type="password" />
+                <input className="form-input" type="password" />
                 <label>Confirm Password</label>
-                <input type="password" />
+                <input className="form-input" type="password" />
                 <div className="flex rounded-xl w-[600px] border border-[#8A8A8A] h-10 mt-5">
                   <div
                     className={`hover:bg-[#003049] text-[#B8B8B8] ${color} hover:text-[#fff] text-center w-full cursor-pointer rounded-xl`}
