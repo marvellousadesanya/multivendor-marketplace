@@ -1,10 +1,10 @@
 import { createSlice, nanoid } from "@reduxjs/toolkit";
 
 const initialState = {
-  balance: 50,
+  balance: 500,
   transactions: [
     {
-      amount: 50,
+      amount: 500,
       transactionID: "1",
       description: "initial deposit",
       funded: true,

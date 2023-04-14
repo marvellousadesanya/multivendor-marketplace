@@ -4,6 +4,8 @@ import { showModal, modalWindow } from "../features/wallet/modalSlice";
 import FundModal from "../components/FundModal";
 import Menu from "../components/Menu";
 import NavBar from "../components/NavBar";
+import addIcon from "../images/add.png";
+import subtractIcon from "../images/subtract.png";
 
 const Wallet = () => {
   const dispatch = useDispatch();
@@ -16,14 +18,14 @@ const Wallet = () => {
       <div>
         <div className="flex justify-around items-center text-xs h-12 font-innerbody font-semibold text-[#6C6C6C]">
           {currentWalletBalance.transactions[index].funded ? (
-            <p className="w-2">Funded Wallet</p>
+            <img src={addIcon} alt="" />
           ) : (
-            <p>Debit</p>
+            <img src={subtractIcon} alt="" />
           )}
           <p className="w-24">{transaction.description}</p>
           <p className="w-4">Date</p>
           <p className="w-4">{transaction.amount}</p>
-          <button>Status</button>
+          <button>Successful</button>
         </div>
         <div className="flex justify-center text-[#D9D9D9]">
           <hr className="w-[90%] text-center" />

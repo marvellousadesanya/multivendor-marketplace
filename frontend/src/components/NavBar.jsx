@@ -4,10 +4,10 @@ import logo from "../images/byteMarketLogo.png";
 
 const NavBar = () => {
   return (
-    <div className="flex h-20 px-7 justify-between items-center bg-[#fff] w-full">
+    <div className="z-10 sticky top-0 flex h-20 px-7 justify-between items-center bg-[#fff] w-full">
       <div>
         <Link to="/">
-          <img alt="" src={logo} />
+          <img alt="" src={logo} className="z-10" />
         </Link>
       </div>
       <input

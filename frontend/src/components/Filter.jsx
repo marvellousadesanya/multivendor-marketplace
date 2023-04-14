@@ -1,6 +1,6 @@
 const Filter = () => {
   return (
-    <div className="sticker absolute right-0 w-[250px] h-full 2xl:w-[360px] font-innerbody text-bodyColor space-y-12 bg-[#fff] pl-8">
+    <div className="sticky h-full top-0 w-[250px] font-innerbody text-bodyColor space-y-12 bg-[#fff] pl-8">
       <div className="flex justify-between">
         <h3 className="text-[32px] font-semibold">Filter</h3>
         <div className="text-mainColor">Clear all</div>

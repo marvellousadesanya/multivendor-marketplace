@@ -5,6 +5,7 @@ import CartIcon from "../images/svg-icons/newCartIcon.jsx";
 import MarketplaceI from "../images/svg-icons/marketplaceIcon.jsx";
 import WalletIcon from "../images/svg-icons/WalletIcon.jsx";
 import AccountIcon from "../images/svg-icons/AccountIcon.jsx";
+import orderedItem from "../images/ordereditems.png";
 
 // import { ReactComponent as Icon } from "../images/marketplaceIcon.svg";
 
@@ -16,7 +17,7 @@ const Menu = () => {
   };
 
   return (
-    <div className="sticky h-[1000px] w-[200px] font-innerbody bg-[#fff]  z-10 2xl:w-[360px]">
+    <div className="sticky h-full top-0 w-[200px] font-innerbody bg-[#fff] ">
       <nav className="relative h-[70vh] mt-24">
         <p className="ml-8">MENU</p>
 
@@ -36,6 +37,13 @@ const Menu = () => {
               <Link className="flex space-x-3" to="/cart">
                 <CartIcon />
                 <li>Cart</li>
+              </Link>
+            </div>
+
+            <div className="hover:pl-2 transition-all ease-in">
+              <Link className="flex space-x-3" to="/orders">
+                <img src={orderedItem} alt="" />
+                <li>Orders</li>
               </Link>
             </div>
 

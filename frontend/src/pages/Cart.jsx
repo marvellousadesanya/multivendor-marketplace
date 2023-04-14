@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import { getTotal, removeAllItems } from "../features/cart/cartSlice";
 import { buyItem } from "../features/wallet/walletSlice";
 import { walletBalance } from "../features/wallet/walletSlice";
+import { orderedProduct } from "../features/orders/ordersSlice";
 
 const Cart = () => {
   const dispatch = useDispatch();
@@ -18,12 +19,12 @@ const Cart = () => {
 
   const [buyBtnClicked, setBuyBtnClicked] = useState(false);
 
-  // let insufficientFunds = false;
   const handleBuyAllItems = () => {
     dispatch(buyItem(cartTotal));
     setBuyBtnClicked(true);
-    // if (currentWalletBalance.error === insufficientFunds)
-    //   dispatch(removeAllItems());
+    dispatch(orderedProduct());
+
+    // if (currentWalletBalance.error === false) dispatch(removeAllItems());
   };
 
   console.log(currentWalletBalance.error);
@@ -79,7 +80,7 @@ const Cart = () => {
                 className="bg-mainColor py-2 w-full font-innerbody font-semibold text-[#fff] rounded-xl"
                 onClick={handleBuyAllItems}
               >
-                Checkout
+                Proceed to Checkout
               </button>
             </section>
 
@@ -93,7 +94,10 @@ const Cart = () => {
                   <div className="flex justify-center">
                     <button
                       className="bg-mainColor px-4 py-3 text-center text-[#fff] rounded-2xl"
-                      onClick={() => setBuyBtnClicked(false)}
+                      onClick={() => {
+                        setBuyBtnClicked(false);
+                        dispatch(removeAllItems());
+                      }}
                     >
                       Close
                     </button>
@@ -113,7 +117,9 @@ const Cart = () => {
                   </Link>
                   <button
                     className="py-2 px-4 bg-mainColor rounded-xl"
-                    onClick={() => setBuyBtnClicked(false)}
+                    onClick={() => {
+                      setBuyBtnClicked(false);
+                    }}
                   >
                     Close
                   </button>

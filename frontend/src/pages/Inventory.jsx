@@ -64,7 +64,9 @@ const Inventory = () => {
       <div className="flex">
         <Menu />
         <div>
-          <div className="grid grid-cols-5 gap-x-5 gap-y-10 m-5">{content}</div>
+          <div className="grid grid-cols-5 gap-x-5 gap-y-10 m-5 w-[calc(100vw-500px)] relative ">
+            {content}
+          </div>
         </div>
         <Filter />
       </div>

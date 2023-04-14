@@ -4,7 +4,10 @@ import Inventory from "./pages/Inventory";
 import ProductDetail from "./components/ProductDetail";
 import Wallet from "./pages/Wallet";
 import Cart from "./pages/Cart";
+import Orders from "./pages/Orders";
 import Footer from "./components/Footer";
+import Register from "./pages/Register";
+import Login from "./pages/Login";
 
 function App() {
   return (
@@ -16,6 +19,9 @@ function App() {
         <Route path="/inventory/:id" element={<ProductDetail />} />
         <Route path="/buyer-wallet" element={<Wallet />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/orders" element={<Orders />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Login />} />
       </Routes>
       <Footer />
     </div>

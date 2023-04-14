@@ -3,7 +3,7 @@ import byteMarketLogo from "../images/byteMarketLogo.png";
 
 const Footer = () => {
   return (
-    <footer className="px-[70px] bg-[#E5E5E5] pt-8">
+    <footer className="px-[70px] bg-[#E5E5E5] pt-8 relative ">
       <div className="flex justify-between">
         <div>
           <img src={byteMarketLogo} alt="logo" />
