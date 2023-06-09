@@ -41,9 +41,10 @@ app.use("/auth", require("./routes/auth"));
 app.use("/users", require("./routes/users"));
 app.use("/refresh", require("./routes/refresh"));
 // app.use("/logout", require("./routes/logout"));
+app.use("./all-products", require("./routes/api/all-products"));
 
 app.use(verifyJWT);
-// app.use("/employees", require("./routes/api/employees"));
+app.use("/add-new-product", require("./routes/api/add-new-product"));
 
 app.use(errorHandler);
 

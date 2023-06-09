@@ -1,6 +1,7 @@
 const jwt = require("jsonwebtoken");
 const User = require("../models/User");
 const bcrypt = require("bcrypt");
+const ROLES_LIST = require("../config/roles_list");
 
 exports.registerUser = async (req, res) => {
   const { firstname, lastname, email, role, password } = req.body;
@@ -22,8 +23,10 @@ exports.registerUser = async (req, res) => {
       firstname,
       lastname,
       email,
+      roles: { [role]: ROLES_LIST[role] },
       password: hashedPwd,
     });
+    console.log(newUser);
 
     res.status(201).json({ success: `New user ${firstname} created!` });
   } catch (err) {
