@@ -9,6 +9,23 @@ const ProductSchema = new Schema({
   description: {
     type: String,
   },
+  category: {
+    type: String,
+  },
+  price: {
+    type: Number,
+    required: true,
+  },
+  image: {
+    type: String,
+  },
+  favorite: {
+    type: Boolean,
+    default: false,
+  },
+  productCount: {
+    type: Number,
+  },
   seller: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",

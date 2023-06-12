@@ -1,11 +1,12 @@
-const jwt = require("jsonwebtoken");
 const User = require("../models/User");
 const bcrypt = require("bcrypt");
+const { nanoid } = require("nanoid");
+
 const ROLES_LIST = require("../config/roles_list");
 
 exports.registerUser = async (req, res) => {
-  const { firstname, lastname, email, role, password } = req.body;
-  if (!email && !password && !firstname)
+  const { fullName, email, role, password } = req.body;
+  if (!email && !password)
     return res.status(400).json({ message: "Please fill all entries" });
 
   // Check if user with given email already exists
@@ -20,15 +21,15 @@ exports.registerUser = async (req, res) => {
 
     // Create new user object
     const newUser = await User.create({
-      firstname,
-      lastname,
+      fullName,
       email,
+      uniqueID: nanoid(6),
       roles: { [role]: ROLES_LIST[role] },
       password: hashedPwd,
     });
     console.log(newUser);
 
-    res.status(201).json({ success: `New user ${firstname} created!` });
+    res.status(201).json({ success: `New user created!` });
   } catch (err) {
     res.status(500).json({ message: err.message });
   }

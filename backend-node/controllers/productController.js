@@ -4,6 +4,7 @@ const User = require("../models/User");
 const getAllProducts = async (req, res) => {
   try {
     const allProducts = await Product.find();
+    console.log(allProducts);
   } catch (error) {
     res.send({ message: "An error occured." });
   }
@@ -16,6 +17,7 @@ const addProduct = async (req, res) => {
     const postedProduct = await Product.create({
       name,
       description,
+      image: req.file.path,
       seller: User._id,
     });
     res.send({ message: "New product added!" });
