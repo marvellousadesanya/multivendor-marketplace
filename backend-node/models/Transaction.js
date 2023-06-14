@@ -7,7 +7,7 @@ const transactionSchema = new Schema({
     default: 10000,
   },
   transactionID: {
-    type: Number,
+    type: String,
     // default: nanoid(),
   },
   description: {

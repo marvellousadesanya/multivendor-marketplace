@@ -30,6 +30,10 @@ const UserSchema = new Schema({
     type: Number,
     default: 100000,
   },
+  pendingBalance: {
+    type: Number,
+    default: 0,
+  },
   productsOwned: [
     {
       type: Schema.Types.ObjectId,
