@@ -17,6 +17,9 @@ const transactionSchema = new Schema({
     type: Boolean,
     default: false,
   },
+  pending: {
+    type: Boolean,
+  },
   user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",

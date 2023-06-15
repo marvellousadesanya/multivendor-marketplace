@@ -26,6 +26,7 @@ const ProductSchema = new Schema({
   productCount: {
     type: Number,
   },
+  confirmed: { Boolean },
   seller: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",

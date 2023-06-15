@@ -41,7 +41,7 @@ app.use("/auth", require("./routes/auth"));
 app.use("/users", require("./routes/users"));
 app.use("/refresh", require("./routes/refresh"));
 app.use("/logout", require("./routes/logout"));
-app.use("./all-products", require("./routes/api/all-products"));
+app.use("/all-products", require("./routes/api/all-products"));
 
 app.use(verifyJWT);
 app.use("/fund-wallet", require("./routes/api/fund-wallet"));
