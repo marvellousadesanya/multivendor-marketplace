@@ -47,6 +47,7 @@ app.use(verifyJWT);
 app.use("/fund-wallet", require("./routes/api/fund-wallet"));
 app.use("/add-new-product", require("./routes/api/add-new-product"));
 app.use("/purchase-item", require("./routes/api/purchase-product"));
+app.use("/withdraw", require("./routes/withdraw-funds"));
 
 app.use(errorHandler);
 

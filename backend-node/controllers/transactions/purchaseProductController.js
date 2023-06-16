@@ -7,6 +7,7 @@ const purchaseProduct = async (req, res) => {
   const { productID } = req.body;
   const userId = req.userId;
 
+  // Get product info
   const product = await Product.findById(productID).populate(
     "seller",
     "fullName walletBalance productsSold"
@@ -14,6 +15,7 @@ const purchaseProduct = async (req, res) => {
 
   const seller = product.seller;
 
+  // Check if user is authenticated
   const user = await User.findById(userId);
   if (!user) {
     return res.status(404).send({ message: "User not found" });
@@ -21,16 +23,18 @@ const purchaseProduct = async (req, res) => {
     console.log(`${user.fullName} authenticated`);
   }
 
+  // Check if user is a buyer or seller
   if (user.roles.Buyer) {
-    console.log(user.walletBalance, product.price);
     if (user.walletBalance > product.price) {
       try {
-        console.log("Check 2");
+        // Deduct product price from wallet balance of buyer
         user.walletBalance -= product.price;
+        user.pendingBalance += product.price;
         await user.save();
 
-        seller.walletBalance += product.price;
-        seller.productsSold.push(productID);
+        //
+        seller.pendingBalance += product.price;
+
         await product.save();
         await seller.save();
 
@@ -40,11 +44,12 @@ const purchaseProduct = async (req, res) => {
           amount: product.price,
           description: `Bought an item: ${product.name}`,
           transactionID: nanoid(9),
+          fulfilled: false,
           funded: false,
         });
-        console.log(`${product.price} has been deducted to your wallet!`);
+        console.log(`${product.price} has been deducted from your wallet!`);
         res.status(200).send({
-          message: `${product.price} has been deducted to your wallet!`,
+          message: `${product.price} has been deducted from your wallet!`,
         });
         console.log(seller);
       } catch (error) {
@@ -58,7 +63,7 @@ const purchaseProduct = async (req, res) => {
     console.log("Not possible. Something wrong");
     res.json({
       message:
-        "You are currently logged in as a seller. Please use Buyer account to purchase items",
+        "You are currently not logged in as a buyer. Please use Buyer account to purchase items",
     });
   }
 };

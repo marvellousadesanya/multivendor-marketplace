@@ -17,7 +17,7 @@ const transactionSchema = new Schema({
     type: Boolean,
     default: false,
   },
-  pending: {
+  fulfilled: {
     type: Boolean,
   },
   user: {
