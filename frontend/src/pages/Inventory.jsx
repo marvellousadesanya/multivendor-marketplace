@@ -1,51 +1,36 @@
-import { useSelector, useDispatch } from "react-redux";
-import { useEffect } from "react";
-import {
-  selectAllProducts,
-  getProductsStatus,
-  getProductsError,
-  fetchProducts,
-} from "../features/products/productsSlice";
-
 import Loader from "react-spinners/DotLoader";
-
 import Product from "../components/Product";
 import Menu from "../components/Menu";
 import Filter from "../components/Filter";
 import NavBar from "../components/NavBar";
+import { useGetProductsQuery } from "../features/api/productApi";
 
 const Inventory = () => {
-  const dispatch = useDispatch();
-
-  const products = useSelector(selectAllProducts);
-  const status = useSelector(getProductsStatus);
-  const error = useSelector(getProductsError);
-
-  console.log(products);
-
-  useEffect(() => {
-    if (status === "idle") {
-      dispatch(fetchProducts());
-    }
-  }, [status, dispatch]);
-
   const override = {
     display: "block",
     margin: "0 auto",
     borderColor: "red",
   };
 
+  const {
+    data: products,
+    isLoading,
+    isSuccess,
+    isError,
+    error,
+  } = useGetProductsQuery();
+
+  console.log(products);
+
   let content;
-  if (status === "loading") {
+  if (isLoading) {
     content = (
       <div className="h-[90vh] w-[80vw] flex justify-center items-center">
         <Loader color={"#F77F00"} cssOverride={override} size={100} />
       </div>
     );
-  } else if (status === "failed") {
-    content = <p>Error</p>;
-  } else if (status === "succeeded") {
-    content = products.map((product) => (
+  } else if (isSuccess) {
+    content = products.products.map((product) => (
       <div key={product.id}>
         <Product
           key={product.id}
@@ -56,6 +41,8 @@ const Inventory = () => {
         />
       </div>
     ));
+  } else if (isError) {
+    content = <p>{error}</p>;
   }
 
   return (
