@@ -21,7 +21,17 @@ exports.getUserById = async (req, res) => {
   res.json(singleUser);
 };
 
-exports.deleteUser = async (req, res) => {
+exports.suspendUser = async () => {
+  try {
+    const userToSuspend = await User.findOne({ _id: req.params.id }).exec();
+    userToSuspend.suspended = true;
+    userToSuspend.save();
+  } catch (error) {
+    res.status(500).send({ "An error occured": error });
+  }
+};
+
+exports.deleteUserById = async (req, res) => {
   try {
     const deletedUser = await User.findOneAndDelete({
       _id: req.params.id,
@@ -30,6 +40,37 @@ exports.deleteUser = async (req, res) => {
       return res.status(404).json({ message: "User not found" });
     }
     res.json({ message: "User deleted successfully" });
+  } catch (error) {
+    // Handle error
+    res.status(500).json({ message: "Internal server error" });
+  }
+};
+
+exports.addUser = async (req, res) => {
+  const { fullName, email, password, role } = req.body;
+
+  const generateRandomPassword = (length) => {
+    const charset =
+      "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()";
+    let password = "";
+
+    for (let i = 0; i < length; i++) {
+      const randomIndex = Math.floor(Math.random() * charset.length);
+      password += charset[randomIndex];
+    }
+
+    return password;
+  };
+  try {
+    const newUser = await User.create({
+      fullName,
+      email,
+      password: password || generateRandomPassword(),
+      role,
+    }).exec();
+    console.log(newUser);
+
+    res.json({ message: "User created successfully!" });
   } catch (error) {
     // Handle error
     res.status(500).json({ message: "Internal server error" });

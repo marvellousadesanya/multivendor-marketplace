@@ -26,6 +26,10 @@ const ProductSchema = new Schema({
   productCount: {
     type: Number,
   },
+  transactionID: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Product",
+  },
   confirmed: { Boolean },
   seller: {
     type: mongoose.Schema.Types.ObjectId,

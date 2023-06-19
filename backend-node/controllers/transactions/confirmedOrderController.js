@@ -12,12 +12,18 @@ exports.confirmedOrder = async (req, res) => {
 
   const product = await Product.findById(productID).populate(
     "seller",
-    "fullName walletBalance productsSold"
+    "fullName walletBalance pendingBalance productsSold"
   );
 
+  // const foundTheTransactionTransaction = await Transaction.findOne(
+  //   transactionID
+  // ).populate(products);
+
+  // Save seller info in variable
   const seller = product.seller;
 
-  if (user.roles.Buyer) {
+  // Check if buyer or seller
+  if (user.roles.Buyer && transactionID && productID) {
     try {
       // Confirm that the order has been received
       product.confirmedOrder = true;
@@ -25,13 +31,11 @@ exports.confirmedOrder = async (req, res) => {
 
       // Save the ordered product to purchased product array
       user.purchasedProducts.push(productID);
-      await buyer.save();
+      await user.save();
 
-      /* Deduct the product price from pending balance
-      of seller and add to main
+      /* Deduct the product price from pending balance of seller and add to main
        walletBalance balance. Deduct the necessary percentage
-       before that. Then add productID to
-       sold products array of seller
+       before that. Then add productID to sold products array of seller
       */
       const byteMarketPercentage = 0.075;
       const byteMarketShare = product.price * byteMarketPercentage;
@@ -41,16 +45,22 @@ exports.confirmedOrder = async (req, res) => {
       seller.walletBalance += product.price;
       await product.save();
       await seller.save();
+      console.log(seller);
 
       // Mark the transaction as fulfilled
-      const confirmedTransaction = await Transaction.updateOne(
-        { transactionID },
-        { fulfilled: true }
-      );
+      const foundTransaction = await Transaction.findOne({ transactionID });
 
-      // Send success response
-      res.send({ message: `Order confirmed. Amount deducted from wallet` });
-      console.log(confirmedTransaction);
+      if (foundTransaction) {
+        const confirmedTransaction = await Transaction.updateOne(
+          { transactionID },
+          { fulfilled: true }
+        );
+        // Send success response
+        res.send({ message: `Order confirmed. Amount credited to seller` });
+        console.log(confirmedTransaction);
+      } else {
+        res.status(400).send({ message: "Transaction not found" });
+      }
     } catch (error) {
       console.log(error);
       res
@@ -58,8 +68,9 @@ exports.confirmedOrder = async (req, res) => {
         .send({ message: "An error occured. Please try again later." });
     }
   } else {
-    res
-      .status(400)
-      .send({ message: "You are currently registered as a seller" });
+    res.status(500).send({
+      message:
+        "An error occured. Kindly confirm if you are logged in as a buyer",
+    });
   }
 };

@@ -1,13 +1,15 @@
 const express = require("express");
 const router = express.Router();
-const fundWalletController = require("../../controllers/transactions/fundWalletController");
+const {
+  withdrawFunds,
+} = require("../../controllers/transactions/withdrawController");
 
 /**
  * @swagger
- * /fund-wallet:
+ * /withdraw:
  *   post:
- *     summary: Fund wallet
- *     description: Fund your wallet balance.
+ *     summary: Withdraw
+ *     description: Withdraw funds from wallet.
  *     security:
  *       - bearerAuth: []
  *     requestBody:
@@ -17,17 +19,15 @@ const fundWalletController = require("../../controllers/transactions/fundWalletC
  *           schema:
  *             type: object
  *             properties:
- *               amountToAdd:
+ *               amountToWithdraw:
  *                 type: number
- *               description:
- *                 type: string
  *     responses:
  *       200:
- *         description: Wallet funded.
+ *         description: Amount successfully withdrawn.
  *       400:
  *         description: Invalid request payload or missing required fields.
  */
 
-router.post("/", fundWalletController.fundWallet);
+router.post("/", withdrawFunds);
 
 module.exports = router;

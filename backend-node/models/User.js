@@ -25,7 +25,7 @@ const UserSchema = new Schema({
     type: String,
     required: true,
   },
-  refreshToken: String,
+
   walletBalance: {
     type: Number,
     default: 100000,
@@ -58,6 +58,8 @@ const UserSchema = new Schema({
       ref: "Product",
     },
   ],
+  suspended: Boolean,
+  refreshToken: String,
 });
 
 module.exports = mongoose.model("User", UserSchema);

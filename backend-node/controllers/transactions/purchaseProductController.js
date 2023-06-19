@@ -10,9 +10,10 @@ const purchaseProduct = async (req, res) => {
   // Get product info
   const product = await Product.findById(productID).populate(
     "seller",
-    "fullName walletBalance productsSold"
+    "fullName walletBalance pendingBalance productsSold"
   );
 
+  // Save seller in its own variable
   const seller = product.seller;
 
   // Check if user is authenticated
@@ -25,6 +26,7 @@ const purchaseProduct = async (req, res) => {
 
   // Check if user is a buyer or seller
   if (user.roles.Buyer) {
+    console.log(user.pendingBalance, typeof user.pendingBalance);
     if (user.walletBalance > product.price) {
       try {
         // Deduct product price from wallet balance of buyer
@@ -34,24 +36,29 @@ const purchaseProduct = async (req, res) => {
 
         //
         seller.pendingBalance += product.price;
+        console.log(seller.pendingBalance);
 
         await product.save();
         await seller.save();
 
         console.log(seller.walletBalance);
 
-        await Transaction.create({
+        const transaction = await Transaction.create({
           amount: product.price,
           description: `Bought an item: ${product.name}`,
           transactionID: nanoid(9),
           fulfilled: false,
           funded: false,
         });
+        transaction.products.push(productID);
+        await transaction.save();
+
         console.log(`${product.price} has been deducted from your wallet!`);
         res.status(200).send({
-          message: `${product.price} has been deducted from your wallet!`,
+          message: `${product.price} has been deducted from your main wallet balance. Order now pending! Do not confirm order if you have not received item!`,
         });
         console.log(seller);
+        console.log(transaction);
       } catch (error) {
         res.send({ message: "An error occured. Try again later" });
         console.log(error);

@@ -1,13 +1,15 @@
 const express = require("express");
 const router = express.Router();
-const fundWalletController = require("../../controllers/transactions/fundWalletController");
+const {
+  confirmedOrder,
+} = require("../../controllers/transactions/confirmedOrderController");
 
 /**
  * @swagger
- * /fund-wallet:
+ * /confirm-order:
  *   post:
- *     summary: Fund wallet
- *     description: Fund your wallet balance.
+ *     summary: Confirm order
+ *     description: Confirm the order has been received and then the balance gets debited from wallet balance.
  *     security:
  *       - bearerAuth: []
  *     requestBody:
@@ -17,17 +19,15 @@ const fundWalletController = require("../../controllers/transactions/fundWalletC
  *           schema:
  *             type: object
  *             properties:
- *               amountToAdd:
- *                 type: number
- *               description:
+ *               transactionID:
  *                 type: string
  *     responses:
  *       200:
- *         description: Wallet funded.
+ *         description: Order confirmed!.
  *       400:
  *         description: Invalid request payload or missing required fields.
  */
 
-router.post("/", fundWalletController.fundWallet);
+router.post("/", confirmedOrder);
 
 module.exports = router;

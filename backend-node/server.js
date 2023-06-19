@@ -11,6 +11,14 @@ const cookieParser = require("cookie-parser");
 const credentials = require("./middleware/credentials");
 const mongoose = require("mongoose");
 const connectDB = require("./config/dbConn");
+
+const swaggerUi = require("swagger-ui-express");
+const swaggerSpec = require("./swagger"); // Import the Swagger specification
+
+// Middleware to serve Swagger UI
+// app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+
 const PORT = process.env.PORT || 3500;
 
 // Connect to MongoDB
@@ -41,13 +49,15 @@ app.use("/auth", require("./routes/auth"));
 app.use("/users", require("./routes/users"));
 app.use("/refresh", require("./routes/refresh"));
 app.use("/logout", require("./routes/logout"));
-app.use("/all-products", require("./routes/api/all-products"));
+
+app.use("/products", require("./routes/api/products"));
 
 app.use(verifyJWT);
 app.use("/fund-wallet", require("./routes/api/fund-wallet"));
 app.use("/add-new-product", require("./routes/api/add-new-product"));
 app.use("/purchase-item", require("./routes/api/purchase-product"));
-app.use("/withdraw", require("./routes/withdraw-funds"));
+app.use("/confirm-order", require("./routes/orders/confirm-order"));
+app.use("/withdraw", require("./routes/api/withdraw-funds"));
 
 app.use(errorHandler);
 

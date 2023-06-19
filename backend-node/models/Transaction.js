@@ -20,6 +20,12 @@ const transactionSchema = new Schema({
   fulfilled: {
     type: Boolean,
   },
+  products: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Product",
+    },
+  ],
   user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
