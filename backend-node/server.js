@@ -21,6 +21,12 @@ app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 const PORT = process.env.PORT || 3500;
 
+// Serve static files from the 'uploads' directory
+app.use(
+  "/product-image",
+  express.static(path.join(__dirname, "product-image"))
+);
+
 // Connect to MongoDB
 connectDB();
 

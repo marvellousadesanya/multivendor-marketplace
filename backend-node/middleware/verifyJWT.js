@@ -6,9 +6,11 @@ const verifyJWT = (req, res, next) => {
   const token = authHeader.split(" ")[1];
   jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, decoded) => {
     if (err) return res.sendStatus(403); //invalid token
-    req.user = decoded.UserInfo.email;
+
+    console.log(req.user);
     req.userId = decoded.UserInfo._id;
     req.roles = decoded.UserInfo.roles;
+    console.log(req.roles, req.userId, req.user);
     next();
   });
 };

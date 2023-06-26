@@ -1,5 +1,6 @@
 const Product = require("../models/Product");
 const User = require("../models/User");
+const path = require("path");
 
 const getAllProducts = async (req, res) => {
   try {
@@ -13,9 +14,15 @@ const getAllProducts = async (req, res) => {
 };
 
 const addProduct = async (req, res) => {
-  const { name, price, description } = req.body;
-
+  // Get the unique userID from header
   const userId = req.userId;
+
+  const { name, price, description, category, stock } = req.body;
+
+  const imagePath = req.file?.path;
+
+  // Normalize the image path using path module
+  const normalizedImagePath = imagePath.split(path.sep).join("/");
 
   const user = await User.findById(userId);
 
@@ -24,7 +31,9 @@ const addProduct = async (req, res) => {
       const postedProduct = await Product.create({
         name,
         description,
-        image: req.file?.path,
+        category,
+        image: normalizedImagePath,
+        stock,
         price,
         seller: user,
       });
@@ -39,7 +48,8 @@ const addProduct = async (req, res) => {
     }
   } else {
     res.status(400).send({
-      message: "Unable to post. You are currently logged in as a buyer.",
+      message:
+        "Unable to post. Please make sure you are logged in as a seller.",
     });
   }
 };

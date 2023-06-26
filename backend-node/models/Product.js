@@ -19,6 +19,7 @@ const ProductSchema = new Schema({
   image: {
     type: String,
   },
+  stock: Number,
   favorite: {
     type: Boolean,
     default: false,
