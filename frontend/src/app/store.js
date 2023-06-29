@@ -4,7 +4,7 @@ import walletSlice from "../features/wallet/walletSlice";
 import modalSlice from "../features/wallet/modalSlice";
 import cartSlice from "../features/cart/cartSlice";
 import ordersSlice from "../features/orders/ordersSlice";
-import { apiSlice } from "../features/api/productApi";
+import { apiSlice } from "../features/api/apiSlice";
 
 const rootReducer = combineReducers({
   [apiSlice.reducerPath]: apiSlice.reducer,

@@ -6,6 +6,7 @@ import NavBar from "./NavBar";
 import { selectAllProducts } from "../features/products/productsSlice";
 import Menu from "./Menu";
 import { moveToCart } from "../features/cart/cartSlice";
+import { useGetProductsQuery } from "../features/api/apiSlice";
 
 import marvSeller from "../images/marv-seller.jpg";
 
@@ -14,10 +15,18 @@ const ProductDetail = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
 
-  const products = useSelector(selectAllProducts);
+  const {
+    data: products,
+    isLoading,
+    isSuccess,
+    isError,
+    error,
+  } = useGetProductsQuery();
+
+  console.log(products);
   const [moveBtnClicked, setMoveBtnClicked] = useState(false);
 
-  const product = products.find((p) => p.id === +id);
+  const product = products.products.find((p) => p.id === +id);
 
   const handleMoveToCart = () => {
     dispatch(moveToCart(product));
@@ -47,8 +56,7 @@ const ProductDetail = () => {
                 <div className="flex space-x-5">
                   <button
                     onClick={handleMoveToCart}
-                    className="bg-mainColor text-[#fff] px-12 py-3 rounded-xl"
-                  >
+                    className="bg-mainColor text-[#fff] px-12 py-3 rounded-xl">
                     Move to Cart
                   </button>
 
@@ -92,8 +100,7 @@ const ProductDetail = () => {
                   <div className="flex justify-center">
                     <button
                       className="bg-mainColor px-4 py-3 text-center text-[#fff] rounded-2xl"
-                      onClick={() => setMoveBtnClicked(false)}
-                    >
+                      onClick={() => setMoveBtnClicked(false)}>
                       Close
                     </button>
                     <Link to="/cart">

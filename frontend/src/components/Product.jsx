@@ -10,7 +10,7 @@ const Product = ({ id, productName, productImage, productPrice }) => {
           <div className="flex justify-center bg-product-bg rounded-lg overflow-hidden">
             <img
               alt=""
-              src={productImage}
+              src={`http://localhost:4500/${productImage}`}
               className="hover:scale-110 transition-all ease-in  h-[173px] rounded-lg object-contain"
             />
           </div>

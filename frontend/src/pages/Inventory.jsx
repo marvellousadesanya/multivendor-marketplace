@@ -3,7 +3,7 @@ import Product from "../components/Product";
 import Menu from "../components/Menu";
 import Filter from "../components/Filter";
 import NavBar from "../components/NavBar";
-import { useGetProductsQuery } from "../features/api/productApi";
+import { useGetProductsQuery } from "../features/api/apiSlice";
 
 const Inventory = () => {
   const override = {
@@ -30,14 +30,14 @@ const Inventory = () => {
       </div>
     );
   } else if (isSuccess) {
-    content = products.products.map((product) => (
+    content = products.map((product) => (
       <div key={product.id}>
         <Product
-          key={product.id}
-          productName={product["title"]}
-          productImage={product.images[2]}
+          key={product._id}
+          productName={product.name}
+          productImage={product.image}
           productPrice={product.price}
-          id={product.id}
+          id={product._id}
         />
       </div>
     ));

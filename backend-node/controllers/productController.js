@@ -21,7 +21,8 @@ const addProduct = async (req, res) => {
 
   const imagePath = req.file?.path;
 
-  // Normalize the image path using path module
+  /* Normalize the image path using path module. Without this, Windows will make use of
+  backward slashes which is not readable by web systems and other OSs */
   const normalizedImagePath = imagePath.split(path.sep).join("/");
 
   const user = await User.findById(userId);

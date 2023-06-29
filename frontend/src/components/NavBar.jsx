@@ -17,6 +17,8 @@ const NavBar = () => {
         placeholder="Search anything"
       />
 
+      <button>Add Product</button>
+
       <div className="flex space-x-2 items-center">
         <p>The User Name</p>
         <img alt="" src={userPic} />
