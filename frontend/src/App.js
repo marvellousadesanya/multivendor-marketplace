@@ -9,6 +9,7 @@ import Footer from "./components/Footer";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import ProductPageSample from "./pages/TestPage";
+import Verify from "./pages/Verification";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         <Route path="/orders" element={<Orders />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/verify" element={<Verify />} />
         <Route path="/test" element={<ProductPageSample />} />
       </Routes>
       <Footer />
