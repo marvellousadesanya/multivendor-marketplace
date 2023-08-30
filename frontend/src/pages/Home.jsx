@@ -51,7 +51,7 @@ const HomePage = () => {
           Your ultimate tech
         </h3>
 
-        <h1 className=" font-heading text-[220px] text-mainColor mt-0">
+        <h1 className=" font-heading text-[220px] text-[#F77F00] mt-0">
           DESTINATION
         </h1>
 
@@ -79,7 +79,7 @@ const HomePage = () => {
 
       <section className="my-7">
         <div className="space-y-3">
-          <h2 className="font-heading text-mainColor text-[50px] text-center">
+          <h2 className="font-heading text-[#F77F00] text-[50px] text-center">
             Shop By Category
           </h2>
 
@@ -95,7 +95,7 @@ const HomePage = () => {
         <h2 className="text-[25px] font-bold font-innerbody">
           Why ByteMarket?
         </h2>
-        <h3 className="font-bold font-innerbody">Various Categories</h3>
+        <h3 className="font-bold font-innerbody ">Various Categories</h3>
         <div className="flex items-center gap-x-20">
           <div className="w-[1200px] text-[#6C6C6C]" data-aos="slide-left">
             At ByteMarket, we pride ourselves on offering a vast selection of

@@ -13,7 +13,7 @@ const Footer = () => {
           <div className="flex flex-auto gap-5">
             <input
               type="text"
-              className="w-[300px] rounded border-2 border-mainColor"
+              className="w-[300px] rounded border-2 border-[#F77F00]"
               placeholder="Enter your email"
             />
             <Button btnText="Register Now" />

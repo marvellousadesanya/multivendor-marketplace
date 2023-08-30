@@ -37,7 +37,7 @@ const Wallet = () => {
   );
 
   return (
-    <div className=" bg-backgroundColor">
+    <div className=" bg-[#ECF0FF]">
       <NavBar />
       <div className="flex">
         <Menu />
@@ -84,7 +84,7 @@ const Wallet = () => {
                   Balance.
                 </p>
                 <button
-                  className="bg-mainColor text-[#fff] rounded-2xl w-36 h-12 text-center mt-2"
+                  className="bg-[#F77F00] text-[#fff] rounded-2xl w-36 h-12 text-center mt-2"
                   onClick={() => {
                     dispatch(showModal(true));
                   }}
@@ -96,7 +96,7 @@ const Wallet = () => {
             {window.window ? <FundModal /> : null}
 
             <section className="w-full mt-4 rounded-2xl bg-[#fff] ">
-              <h2 className="font-innerbody pt-8 font-semibold text-2xl text-bodyColor ml-10">
+              <h2 className="font-innerbody pt-8 font-semibold text-2xl text-[#00304] ml-10">
                 Transactions
               </h2>
 
