@@ -14,7 +14,7 @@ const FundModal = () => {
   return (
     <div>
       {fundModal.window ? (
-        <div className="absolute z-10 rounded-2xl w-72 text-bodyColor font-innerbody bg-[#fff] p-5">
+        <div className="absolute z-10 rounded-2xl w-72 text-[#00304] font-innerbody bg-[#fff] p-5">
           <form className="flex flex-col space-y-2 justify-center">
             <h3 className="font-bold text-4xl">Add Product</h3>
             <p>You can ignore the card details for now...</p>
@@ -46,7 +46,8 @@ const FundModal = () => {
                 onClick={(e) => {
                   e.preventDefault();
                   dispatch(showModal(false));
-                }}>
+                }}
+              >
                 Cancel
               </button>
               <button
@@ -54,7 +55,8 @@ const FundModal = () => {
                   e.preventDefault();
                   dispatch(fundWallet(amountToAdd, description));
                 }}
-                className="bg-mainColor text-[#fff] rounded-2xl w-36 h-12">
+                className="bg-[#F77F00] text-[#fff] rounded-2xl w-36 h-12"
+              >
                 Fund
               </button>
             </div>
