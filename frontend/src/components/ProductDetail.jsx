@@ -45,19 +45,18 @@ const ProductDetail = () => {
                 <img src={product.images[0]} alt="" className="w-[360px]" />
               </div>
               <div className="space-y-5">
-                <h1 className="font-innerbody text-[40px] text-[#00304]">
+                <h1 className="font-innerbody text-[40px] text-bodyColor">
                   {product.title}
                 </h1>
                 <p>{product.description}</p>
-                <p className="font-innerbody text-[40px] text-[#00304]">
+                <p className="font-innerbody text-[40px] text-bodyColor">
                   ${product.price}
                 </p>
 
                 <div className="flex space-x-5">
                   <button
                     onClick={handleMoveToCart}
-                    className="bg-[#F77F00] text-[#fff] px-12 py-3 rounded-xl"
-                  >
+                    className="bg-mainColor text-[#fff] px-12 py-3 rounded-xl">
                     Move to Cart
                   </button>
 
@@ -70,7 +69,7 @@ const ProductDetail = () => {
               </div>
             </div>
 
-            <h3 className="font-innerbody text-[40px] text-[#00304]">
+            <h3 className="font-innerbody text-[40px] text-bodyColor">
               Product details
             </h3>
             <p>Lorem Ipsum</p>
@@ -95,18 +94,17 @@ const ProductDetail = () => {
             {moveBtnClicked ? (
               <div className="flex justify-center items-center shadow bg-[#fff] w-[500px] h-[200px] rounded top-0 bottom-0 left-0 right-0 m-auto absolute">
                 <div className="w-[400px]">
-                  <p className="font-innerbody text-[#00304]">
+                  <p className="font-innerbody text-bodyColor">
                     Product moved to Cart Page.
                   </p>
                   <div className="flex justify-center">
                     <button
-                      className="bg-[#F77F00] px-4 py-3 text-center text-[#fff] rounded-2xl"
-                      onClick={() => setMoveBtnClicked(false)}
-                    >
+                      className="bg-mainColor px-4 py-3 text-center text-[#fff] rounded-2xl"
+                      onClick={() => setMoveBtnClicked(false)}>
                       Close
                     </button>
                     <Link to="/cart">
-                      <button className="bg-[#F77F00] px-4 py-3 text-center text-[#fff] rounded-2xl">
+                      <button className="bg-mainColor px-4 py-3 text-center text-[#fff] rounded-2xl">
                         Visit Cart
                       </button>
                     </Link>
