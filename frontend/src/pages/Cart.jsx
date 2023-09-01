@@ -37,14 +37,14 @@ const Cart = () => {
         <div>
           {cart.length === 0 ? (
             <div className="rounded shadow-md h-48 bg-[#fff] m-5 flex justify-center items-center w-[1000px]">
-              <span className="font-innerbody space-y-3 text-bodyColor text-base font-semibold">
+              <span className="font-innerbody space-y-3 text-[#00304] text-base font-semibold">
                 <div className="flex justify-center">
                   <img src={cartIcon} alt="" />
                 </div>
                 <p className="text-center text-xl">Your Cart is empty</p>
                 <div className="flex justify-center">
                   <Link to="/inventory">
-                    <button className="text-[#fff] font-innerbody bg-mainColor rounded-xl py-2 px-4">
+                    <button className="text-[#fff] font-innerbody bg-[#F77F00] rounded-xl py-2 px-4">
                       Start Shopping
                     </button>
                   </Link>
@@ -71,14 +71,14 @@ const Cart = () => {
             </section>
             {cart.length ? (
               <section className="rounded-2xl bg-[#fff] h-32 mt-5 w-64 p-3">
-                <h3 className="font-innerbody font-semibold text-bodyColor">
+                <h3 className="font-innerbody font-semibold text-[#00304]">
                   Summary
                 </h3>
                 <p className="font-innerbody text-[#6c6c6c] text-3xl">
                   ${cartTotal}
                 </p>
                 <button
-                  className="bg-mainColor py-2 w-full font-innerbody font-semibold text-[#fff] rounded-xl"
+                  className="bg-[#F77F00] py-2 w-full font-innerbody font-semibold text-[#fff] rounded-xl"
                   onClick={handleBuyAllItems}
                 >
                   Proceed to Checkout
@@ -89,13 +89,13 @@ const Cart = () => {
             {buyBtnClicked && currentWalletBalance.error === false ? (
               <div className="flex justify-center items-center shadow bg-[#fff] w-[500px] h-[200px] rounded top-0 bottom-0 left-0 right-0 m-auto absolute">
                 <div className="w-[400px]">
-                  <p className="font-innerbody text-bodyColor">
+                  <p className="font-innerbody text-[#00304]">
                     Thank you for your purchase! {cartTotal} has been debited
                     from your wallet. Please check your wallet balance.
                   </p>
                   <div className="flex justify-center">
                     <button
-                      className="bg-mainColor px-4 py-3 text-center text-[#fff] rounded-2xl"
+                      className="bg-[#F77F00] px-4 py-3 text-center text-[#fff] rounded-2xl"
                       onClick={() => {
                         setBuyBtnClicked(false);
                         dispatch(removeAllItems());
@@ -113,12 +113,12 @@ const Cart = () => {
                 Insufficient funds! Kindly add more funds to your wallet.
                 <div className="flex justify-center text-[#fff] font-innerbody space-x-3">
                   <Link to="/buyer-wallet">
-                    <button className="py-2 px-4 bg-mainColor rounded-xl">
+                    <button className="py-2 px-4 bg-[#F77F00] rounded-xl">
                       Fund Wallet
                     </button>
                   </Link>
                   <button
-                    className="py-2 px-4 bg-mainColor rounded-xl"
+                    className="py-2 px-4 bg-[#F77F00] rounded-xl"
                     onClick={() => {
                       setBuyBtnClicked(false);
                     }}

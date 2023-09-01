@@ -6,9 +6,8 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
-import logo from "../images/byteMarketLogo.png";
-import registerPic from "../images/registerPic.png";
 import axios from "../api/axios";
+import LeftSidebar from "../components/LeftSidebar";
 
 const EMAIL_REGEX = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 const NAME_REGEX = /^[A-Za-z\s-]{4,24}$/;
@@ -149,29 +148,10 @@ const Register = () => {
       ) : (
         <div className=" h-full">
           <div className="flex">
-            <div className="bg-[#DDE4FE]  h-screen flex justify-center">
-              <div className="text-center space-y-7 w-[600px]">
-                <div className="flex justify-center mb-20 pt-7">
-                  <img src={logo} alt="" />
-                </div>
-
-                <div className="flex justify-center ">
-                  <img src={registerPic} className="w-[350px]" alt="" />
-                </div>
-
-                <p className="text-bodyColor font-innerbody">Shop tech with</p>
-                <h3 className="text-mainColor font-innerbody font-semibold text-5xl">
-                  ByteMarket
-                </h3>
-                <p className="text-bodyColor font-innerbody">
-                  Your go to online store for gadgets
-                </p>
-              </div>
-            </div>
-
-            <div className="flex justify-center items-center h-screen w-[900px] bg-[#fff]">
+            <LeftSidebar />
+            <div className="flex justify-center items-center h-full w-[900px] bg-[#fff]">
               <form
-                className="text-bodyColor font-innerbody w-[650px]"
+                className="text-[#00304] font-innerbody w-[650px] my-20"
                 onSubmit={handleRegistration}
               >
                 <div>
@@ -182,7 +162,9 @@ const Register = () => {
                   >
                     {errMsg}
                   </p>
-                  <h3 className="font-bold text-4xl mb-5">Register</h3>
+                  <h3 className="font-bold text-4xl mb-5 text-[#013220]">
+                    Register
+                  </h3>
                   <div className="flex flex-col ">
                     <label htmlFor="firstname">
                       Firstname:
@@ -203,12 +185,13 @@ const Register = () => {
                       ref={nameRef}
                       onChange={(e) => setName(e.target.value)}
                       value={name}
+                      placeholder="Enter first name "
                       required
                       aria-invalid={validName ? "false" : "true"}
                       aria-describedby="uidnote"
                       onFocus={() => setNameFocus(true)}
                       onBlur={() => setNameFocus(false)}
-                      className="form-input"
+                      className="form-input "
                     />
                     <p
                       id="uidnote"
@@ -241,6 +224,7 @@ const Register = () => {
                       type="text"
                       id="firstname"
                       ref={lastNameRef}
+                      placeholder="enter last name"
                       onChange={(e) => setLastName(e.target.value)}
                       value={lastName}
                       required
@@ -282,6 +266,7 @@ const Register = () => {
                       ref={emailRef}
                       type="email"
                       id="email"
+                      placeholder="enter email"
                       onChange={(e) => setEmail(e.target.value)}
                       value={email}
                       required
@@ -317,6 +302,7 @@ const Register = () => {
                       className="form-input"
                       type="password"
                       id="password"
+                      placeholder="enter password"
                       onChange={(e) => setPwd(e.target.value)}
                       value={pwd}
                       required
@@ -353,8 +339,9 @@ const Register = () => {
                       />
                     </label>
                     <input
-                      className="form-input"
+                      className="form-input "
                       type="password"
+                      placeholder="re-enter password "
                       id="confirm_pwd"
                       onChange={(e) => setMatchPwd(e.target.value)}
                       value={matchPwd}
@@ -388,16 +375,21 @@ const Register = () => {
                         Buyer
                       </div>
                     </div>
-                    <input type="checkbox" />
-                    <span className={`text-[#B8B8B8]`}>
-                      I agree with the terms and conditions
-                    </span>
+                    <div className="my-6">
+                      <input
+                        type="checkbox"
+                        className="h-6 w-6 mr-2 accent-orange-400"
+                      />
+                      <span className="text-lg">
+                        I agree with the terms, privacy policy and conditions
+                      </span>
+                    </div>
                     <button
                       disabled={
                         !validName || !validPwd || !validMatch ? true : false
                       }
                       className={
-                        "rounded-xl cursor-pointer w-[600px] bg-mainColor text-[#fff] h-10"
+                        "rounded-xl cursor-pointer w-[600px] bg-[#F77F00] text-[#fff] h-10"
                       }
                       // onClick={(e) => e.preventDefault()}
                     >
@@ -405,7 +397,7 @@ const Register = () => {
                     </button>
                     <p className="text-[#B8B8B8]">
                       Already have an account?
-                      <span className="font-bold text-bodyColor">
+                      <span className="font-bold text-[#00304]">
                         <Link to="/login">Login</Link>
                       </span>
                     </p>
