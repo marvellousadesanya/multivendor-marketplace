@@ -1,4 +1,5 @@
 import "./globals.css";
+import { Providers } from "@/redux/provider";
 import type { Metadata } from "next";
 import { Manrope, Bebas_Neue } from "next/font/google";
 
@@ -28,7 +29,7 @@ export default function RootLayout({
     <html lang="en">
       <body
         className={`${manrope.variable} font-sans ${bebas.variable} font-bebas`}>
-        {children}
+        <Providers>{children}</Providers>
       </body>
     </html>
   );

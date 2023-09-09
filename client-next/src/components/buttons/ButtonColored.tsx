@@ -4,7 +4,7 @@ interface ButtonColoredProps {
 
 function ButtonColored({ title = "Button" }: ButtonColoredProps) {
   return (
-    <div className="rounded-xl py-4 text-center cursor-pointer text-lg bg-brand-orange w-[280px] z-10 shadow-sm text-white font-bold">
+    <div className="rounded-xl py-3 text-center cursor-pointer text-sm bg-brand-orange px-4 z-3 shadow-sm text-white font-bold">
       {title}
     </div>
   );
