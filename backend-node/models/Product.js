@@ -27,6 +27,9 @@ const ProductSchema = new Schema({
   productCount: {
     type: Number,
   },
+  slug: {
+    type: String,
+  },
   transactionID: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Product",

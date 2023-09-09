@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import userPic from "../images/userpic.png";
 import logo from "../images/byteMarketLogo.png";
-import axios from "axios";
 
 const NavBar = () => {
   return (

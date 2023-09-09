@@ -61,6 +61,8 @@ app.use("/products", require("./routes/api/products"));
 app.use(verifyJWT);
 app.use("/fund-wallet", require("./routes/api/fund-wallet"));
 app.use("/add-new-product", require("./routes/api/add-new-product"));
+// app.use("/get-product-by-slug", require("./routes/api/get-product-by-slug"));
+app.use("/update-product", require("./routes/api/update-product"));
 app.use("/purchase-item", require("./routes/api/purchase-product"));
 app.use("/confirm-order", require("./routes/orders/confirm-order"));
 app.use("/withdraw", require("./routes/api/withdraw-funds"));
